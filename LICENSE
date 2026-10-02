@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Abhinav Kushwaha
+Copyright (c) 2026 Pranjal Pratap Singh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+LegacySource Notice
+-------------------
+
+The modern .NET/WPF application, release scripts, GitHub workflows, and
+migration documentation outside LegacySource are covered by the MIT License
+above.
+
+LegacySource preserves the original VB6-era GTA SA Control Center source, data,
+and help material for migration reference. The original bundled readme/help text
+describes that project as open source. Files in LegacySource remain subject to
+any original author notices present in that folder.
+
+Compiled legacy executables, installer packages, binary dumps, and zip backups
+are intentionally excluded from this public source repository.
