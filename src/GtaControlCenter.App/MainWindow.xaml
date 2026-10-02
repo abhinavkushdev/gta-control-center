@@ -1,0 +1,131 @@
+<Window x:Class="GtaControlCenter.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="GTA SA Control Center"
+        Width="1180"
+        Height="760"
+        MinWidth="1050"
+        MinHeight="680"
+        Background="#111827">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Padding="18" CornerRadius="12" Background="#1F2937" Margin="0,0,0,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="GTA SAN ANDREAS CONTROL CENTER" FontSize="21" FontWeight="SemiBold" Foreground="#F9FAFB" />
+                    <TextBlock Margin="0,4,0,0" Foreground="#9CA3AF" Text="Modern .NET 8 utility with guarded runtime features and preserved legacy assets." />
+                </StackPanel>
+
+                <Border Grid.Column="1" Padding="12,6" CornerRadius="8" Background="#0F172A" VerticalAlignment="Center">
+                    <TextBlock Foreground="#60A5FA" FontWeight="SemiBold" Text="{Binding RuntimeFeatureStateText}" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <TabControl Grid.Row="1" Background="#111827" Foreground="#E5E7EB">
+            <TabItem Header="Setup">
+                <Grid Margin="14">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock FontWeight="SemiBold" FontSize="16" Text="Installation Validation" />
+
+                    <Grid Grid.Row="1" Margin="0,12,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Height="34"
+                                 VerticalContentAlignment="Center"
+                                 Text="{Binding InstallPath, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button Grid.Column="1"
+                                Margin="10,0,0,0"
+                                Padding="18,6"
+                                Content="Validate"
+                                Click="ValidateInstallButton_Click" />
+                    </Grid>
+
+                    <Border Grid.Row="2" Margin="0,12,0,0" CornerRadius="8" Padding="12" Background="#1F2937">
+                        <StackPanel>
+                            <TextBlock FontWeight="SemiBold" Text="{Binding ValidationSummary}" />
+                            <TextBlock Margin="0,6,0,0" Foreground="#D1D5DB" TextWrapping="Wrap" Text="{Binding ValidationDetails}" />
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Row="3" Margin="0,12,0,0" CornerRadius="8" Padding="12" Background="#1F2937">
+                        <StackPanel>
+                            <TextBlock FontWeight="SemiBold" Text="Safety and support checks" />
+                            <TextBlock Margin="0,6,0,0" Foreground="#D1D5DB" TextWrapping="Wrap" Text="• Requires gta_sa.exe, data, and models folders&#x0a;• Runtime controls unlock only for supported executable builds&#x0a;• Blocks system/temp install paths to reduce accidental misuse" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Player" IsEnabled="{Binding RuntimeFeaturesEnabled}">
+                <StackPanel Margin="14">
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Player Controls" />
+                    <TextBlock Margin="0,8,0,0" Text="Health, armor, wanted level, and teleport presets are available after setup validation." />
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Vehicles" IsEnabled="{Binding RuntimeFeaturesEnabled}">
+                <StackPanel Margin="14">
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Vehicle Controls" />
+                    <TextBlock Margin="0,8,0,0" Text="Vehicle spawn, repair, and handling helpers are unlocked for supported builds." />
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Weapons" IsEnabled="{Binding RuntimeFeaturesEnabled}">
+                <StackPanel Margin="14">
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Weapon Controls" />
+                    <TextBlock Margin="0,8,0,0" Text="Starter packs and ammo tools are staged here for validated runtime sessions." />
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="World" IsEnabled="{Binding RuntimeFeaturesEnabled}">
+                <StackPanel Margin="14">
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="World Controls" />
+                    <TextBlock Margin="0,8,0,0" Text="Weather, time cycle, and traffic/pedestrian modifier controls are grouped here." />
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Garage" IsEnabled="{Binding RuntimeFeaturesEnabled}">
+                <StackPanel Margin="14">
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Garage Tools" />
+                    <TextBlock Margin="0,8,0,0" Text="Garage import/export and save-slot utilities are available for supported game builds." />
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Runtime Cheats" IsEnabled="{Binding RuntimeFeaturesEnabled}">
+                <StackPanel Margin="14">
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Runtime Cheats" />
+                    <TextBlock Margin="0,8,0,0" Text="One-click runtime toggles are intentionally gated by executable validation checks." />
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Configuration">
+                <StackPanel Margin="14">
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Application Configuration" />
+                    <TextBlock Margin="0,8,0,0" TextWrapping="Wrap" Text="Install path and generated runtime data are stored under LocalAppData to avoid writing into the game directory." />
+                    <TextBlock Margin="0,10,0,0" FontFamily="Consolas" Text="{Binding LocalDataDirectory}" />
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

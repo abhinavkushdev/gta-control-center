@@ -427,3 +427,12 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# GTA Control Center local/runtime data
+artifacts/
+LegacySource/**/*.bak
+LegacySource/**/*.tmp
+LegacySource/**/*.log
+*.asi
+*.cleo
+*.dmp
